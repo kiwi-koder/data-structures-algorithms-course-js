@@ -12,6 +12,18 @@
 //   4
 //   buzz
 
-function fizzBuzz(n) {}
+function fizzBuzz(n) {
+    for (let i = 1; i <= n; i++) {
+        const dividesThree = i % 3 === 0;
+        const dividesFive = i % 5 === 0;
+        if (!dividesThree && !dividesFive) {
+            console.log(i);
+        } else {
+            const fizz = dividesThree ? "fizz" : "";
+            const buzz = dividesFive ? "buzz" : "";
+            console.log(`${fizz}${buzz}`);
+        }
+    }
+}
 
 module.exports = fizzBuzz;

@@ -14,6 +14,9 @@
 //       ' ### '
 //       '#####'
 
-function pyramid(n) {}
+function pyramid(n) {
+    const baseLength = 2 * n - 1;
+    
+}
 
 module.exports = pyramid;
