@@ -10,8 +10,7 @@
 // *Do not* access the array inside of any queue, only
 // use the 'add', 'remove', and 'peek' functions.
 // --- Example
-//    const queueOne = new Queue();
-//    queueOne.add(1);
+
 //    queueOne.add(2);
 //    const queueTwo = new Queue();
 //    queueTwo.add('Hi');
@@ -22,8 +21,15 @@
 //    q.remove() // 2
 //    q.remove() // 'There'
 
-const Queue = require('./queue');
+const Queue = require("./queue");
+function weave(sourceOne, sourceTwo) {
+    const weaveQueue = new Queue();
 
-function weave(sourceOne, sourceTwo) {}
+    while (sourceOne.peek() || sourceTwo.peek()) {
+        if (sourceOne.peek()) weaveQueue.add(sourceOne.remove());
+        if (sourceTwo.peek()) weaveQueue.add(sourceTwo.remove());
+    }
+    return weaveQueue;
+}
 
 module.exports = weave;

@@ -29,54 +29,57 @@ function matrix(
     count = 1
 ) {
     if (count > Math.pow(n, 2)) return array;
+    const isX = array[row] && array[row][col] === "x";
     switch (state) {
         case 0:
-            if (array[row] && array[row][col] === "x") {
+            if (isX) {
                 array[row][col] = count;
                 col++;
                 count++;
             } else {
                 col--;
                 row++;
-                state = (state + 1) % 4;
+                state = 1;
             }
-            return matrix(n, array, state, col, row, count);
+
+            break;
         case 1:
-            if (array[row] && array[row][col] === "x") {
+            if (isX) {
                 array[row][col] = count;
                 row++;
                 count++;
             } else {
                 col--;
                 row--;
-                state = (state + 1) % 4;
+                state = 2;
             }
-            return matrix(n, array, state, col, row, count);
+            break;
         case 2:
-            if (array[row] && array[row][col] === "x") {
+            if (isX) {
                 array[row][col] = count;
                 col--;
                 count++;
             } else {
                 col++;
                 row--;
-                state = (state + 1) % 4;
+                state = 3;
             }
-            return matrix(n, array, state, col, row, count);
+            break;
         case 3:
-            if (array[row] && array[row][col] === "x") {
+            if (isX) {
                 array[row][col] = count;
                 row--;
                 count++;
             } else {
                 col++;
                 row++;
-                state = (state + 1) % 4;
+                state = 0;
             }
-            return matrix(n, array, state, col, row, count);
+            break;
         default:
             break;
     }
+    return matrix(n, array, state, col, row, count);
 }
-
+console.log(matrix(10));
 module.exports = matrix;
